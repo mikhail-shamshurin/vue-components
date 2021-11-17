@@ -1,32 +1,32 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+    <app-slider :slides="slides" adaptiveSize looped>
+        <template #slide="{ slideIndex }">
+            {{ slideIndex }}
+        </template>
+    </app-slider>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+    import AppSlider from './components/AppSlider.vue'
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+    export default {
+        components: {
+            AppSlider
+        },
+        data: () => ({
+            slides: [
+                {
+                    alias: 'alias1'
+                },
+                {
+                    alias: 'alias2'
+                },
+                {
+                    alias: 'alias3'
+                }
+            ]
+        })
     }
-  }
-}
-</style>
+</script>
+
+<style></style>
