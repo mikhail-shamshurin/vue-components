@@ -1,32 +1,5 @@
 <template>
-    <app-slider :slides="slides" adaptiveSize looped>
-        <template #slide="{ slideIndex }">
-            {{ slideIndex }}
-        </template>
-    </app-slider>
+    <div id="app"></div>
 </template>
 
-<script>
-    import AppSlider from './components/AppSlider.vue'
-
-    export default {
-        components: {
-            AppSlider
-        },
-        data: () => ({
-            slides: [
-                {
-                    alias: 'alias1'
-                },
-                {
-                    alias: 'alias2'
-                },
-                {
-                    alias: 'alias3'
-                }
-            ]
-        })
-    }
-</script>
-
-<style></style>
+<style lang="scss"></style>
