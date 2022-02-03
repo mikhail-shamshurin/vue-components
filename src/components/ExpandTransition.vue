@@ -1,54 +1,50 @@
 <template>
-    <transition
-        name="expand"
-        @after-enter="afterEnter"
-        @enter="enter"
-        @leave="leave"
-    >
+    <transition name="expand" @after-enter="afterEnter" @enter="enter" @leave="leave">
         <slot />
     </transition>
 </template>
 
 <script>
-export default {
-    name: 'TransitionExpand',
-    methods: {
-        enter(element) {
-            const { width } = getComputedStyle(element)
-            const target = element
+    export default {
+        name: 'TransitionExpand',
+        methods: {
+            enter(element) {
+                const { width } = window.getComputedStyle(element)
+                const target = element
 
-            target.style.width = width
-            target.style.position = 'absolute'
-            target.style.visibility = 'hidden'
-            target.style.height = 'auto'
+                target.style.width = width
+                target.style.position = 'absolute'
+                target.style.visibility = 'hidden'
+                target.style.height = 'auto'
 
-            const { height } = getComputedStyle(element)
+                const { height } = window.getComputedStyle(element).hei
 
-            target.style.width = null
-            target.style.position = null
-            target.style.visibility = null
-            target.style.height = 0
-            window.requestAnimationFrame(() => {
-                target.style.height = height
-            })
-        },
-        afterEnter(element) {
-            const target = element
-
-            target.style.height = 'auto'
-        },
-        leave(element) {
-            const { height } = window.getComputedStyle(element)
-            const target = element
-
-            target.style.height = height
-
-            window.requestAnimationFrame(() => {
+                target.style.width = null
+                target.style.position = null
+                target.style.visibility = null
                 target.style.height = 0
-            })
+
+                window.requestAnimationFrame(() => {
+                    target.style.height = height
+                })
+            },
+            afterEnter(element) {
+                const target = element
+
+                target.style.height = 'auto'
+            },
+            leave(element) {
+                const { height } = window.getComputedStyle(element)
+                const target = element
+
+                target.style.height = height
+
+                window.requestAnimationFrame(() => {
+                    target.style.height = 0
+                })
+            }
         }
     }
-}
 </script>
 
 <style lang="scss">
