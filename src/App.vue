@@ -1,36 +1,26 @@
 <template>
     <div id="app">
-        <AppSideContent :isOpen="open" position="bottom">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo possimus facilis enim
-            laboriosam dolor ipsa maiores amet ipsam fugiat voluptatem numquam voluptates deleniti,
-            at assumenda minima culpa accusamus minus ex.
-        </AppSideContent>
-        <button class="button" @click="toggle">toggle</button>
+        <input type="text" v-model="field.value" v-for="(field, index) of fields" :key="index" />
+        <button @click="addField">Добавить поле</button>
     </div>
 </template>
 
 <script>
-    import AppSideContent from './components/AppSideContent.vue'
 
     export default {
-        name: 'App',
-        components: {
-            AppSideContent
-        },
         data: () => ({
-            open: false
+            fields: [],
+            field: {
+                value: ''
+            }
         }),
         methods: {
-            toggle() {
-                this.open = !this.open
+            addField() {
+                const copy = JSON.parse(JSON.stringify(this.field))
+                this.fields.push(copy)
             }
         }
     }
 </script>
 
-<style lang="scss">
-    .button {
-        position: relative;
-        z-index: 1000;
-    }
-</style>
+<style lang="scss"></style>

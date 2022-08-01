@@ -1,5 +1,8 @@
 <template>
-    <div class="slider" ref="slider">
+    <div
+        ref="slider"
+        class="slider"
+    >
         <div
             class="slider__slides-wrapper"
             @touchend="touchEnd"
